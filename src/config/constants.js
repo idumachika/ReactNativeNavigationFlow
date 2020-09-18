@@ -1,1 +1,1 @@
-export const API_URL = 'https://api1.next-game.app/api';
+export const API_URL = 'https://www.spendwise.ng';

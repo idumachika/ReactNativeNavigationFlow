@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { API_URL } from '../config/constants';
-import {resetAuthAsyncStorage, setAuthAsyncStorage} from "./getAuthAsyncStorage";
+import { resetAuthAsyncStorage, setAuthAsyncStorage } from "./getAuthAsyncStorage";
 
 function login(username, password) {
   return new Promise((resolve, reject) => {
-    axios.post(`${API_URL}/login`, {
-      email: username,
+    axios.post(`${API_URL}/api/accounts/login/`, {
+      username: username,
       password,
     }).then(async (response) => {
+      console.log('this is the service response ', response)
       try {
         await setAuthAsyncStorage(response);
         resolve(response);

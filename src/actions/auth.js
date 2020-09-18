@@ -6,8 +6,8 @@ import {
   AUTH_LOGGING_OUT,
   AUTH_LOGOUT
 } from "../constants/auth";
-import {navigate} from "../services/navRef";
-import {userService} from "../services/userService";
+import { navigate } from "../services/navRef";
+import { userService } from "../services/userService";
 
 export const loggingIn = (loggingIn) => ({
   type: AUTH_LOGGING_IN,
@@ -27,10 +27,11 @@ export const errorLogIn = (errorMessage) => ({
 export const login = (username, password) => (dispatch) => {
   dispatch(loggingIn(true));
   userService.login(username, password).then(async (res) => {
+    console.log('this is auth response', res)
     await dispatch(loggedIn(res.data));
     await navigate('Home');
   }).catch((err) => {
-    dispatch(errorLogIn('Wrong username or password'));
+    dispatch(errorLogIn('Wrong Email and Password'));
   }).finally(() => {
     dispatch(loggingIn(false));
   });

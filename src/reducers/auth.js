@@ -9,6 +9,7 @@ import {
 
 const INITIAL_STATE = {
   user: null,
+  email: null,
   token: null,
   loggingIn: false,
   loggingOut: false,
@@ -42,10 +43,11 @@ export default function (state = INITIAL_STATE, action) {
     }
 
     case AUTH_LOGGED_IN: {
-      let {user, token} = action.payload;
+      let { user, email, token } = action.payload;
       return {
         ...state,
         user,
+        email,
         token,
         errorMessageLogin: null,
         loggingIn: false,
